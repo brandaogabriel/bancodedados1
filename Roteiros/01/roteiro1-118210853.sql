@@ -25,7 +25,7 @@ CREATE TABLE oficina(
 	nome_fantasia varchar(40),
 	endereco varchar(45),
 	telefone char(11),
-	reparos integer REFERENCES reparo(reparo_id)
+	reparos integer
 );
 
 
@@ -60,7 +60,8 @@ CREATE TABLE reparo(
 	data_reparo date
 );
 
-DROP TABLE automovel, segurado, perito, oficina, seguro, sinistro, pericia, reparo;
+ALTER TABLE oficina ADD CONSTRAINT oficina_reparos_fkey FOREIGN KEY (reparos) REFERENCES reparo(reparo_id);
 
+DROP TABLE automovel, segurado, perito, oficina, seguro, sinistro, pericia, reparo;
 
 -- Poderia ter as tabelas de emplooyes que teriam todos os funcionarios da oficina, peritos, mecanicos, etc. 
